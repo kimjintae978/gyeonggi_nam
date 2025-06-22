@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -6,77 +7,76 @@
 <title>교역자 주소록</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @page {
-            size: A4;
-            margin: 30mm;
-        }
+    @page {
+        size: A4;
+        margin: 20mm;
+    }
 
-        body {
-            font-family: "HY견고딕", "Malgun Gothic", sans-serif;
-            margin: 20px;
-            background-color: #fff;
-        }
+    body {
+        font-family: "HY견고딕", "Malgun Gothic", sans-serif;
+        margin: 20px;
+        background-color: #fff;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 24pt;
-            font-weight: bold;
-        }
+    h1 {
+        text-align: center;
+        font-size: 24pt;
+        font-weight: bold;
+    }
 
-        p {
-            text-align: center;
-            font-size: 14pt;
-            font-weight: bold;
-        }
+    p {
+        text-align: center;
+        font-size: 14pt;
+        font-weight: bold;
+    }
 
-        table {
-            width: 20cm;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
 
-        th, td {
-            height: 5cm;
-            border: 2px solid #000;
-            text-align: center;
-            word-wrap: break-word;
-            font-size: 12pt;
-            font-weight: bold;
-        }
+    th, td {
+        height: 1cm; /* 📏 행 높이 조절: 필요시 cm단위로 수정 */
+        border: 2px solid #000;
+        text-align: center;
+        word-wrap: break-word;
+        font-size: 12pt;
+        font-weight: bold;
+    }
 
-        th {
-            background-color: #e0e0e0;
-        }
-/* 열폭 수동 조정 (예: 서열, 이름, 전화번호, 교회주소, 목사임직, 전도사임직) */
-th:nth-child(1), td:nth-child(1) { width: 1cm; }   /* 서열 */
-th:nth-child(2), td:nth-child(2) { width: 3cm; }   /* 이름 */
-th:nth-child(3), td:nth-child(3) { width: 4cm; }   /* 전화번호 */
-th:nth-child(4), td:nth-child(4) { width: 6cm; }   /* 교회주소 */
-th:nth-child(5), td:nth-child(5) { width: 4cm; }   /* 목사임직일자 */
-th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
-        /* =====================================
-   🎨 배경 색상 직접 지정 영역 (현재는 HTML <td> style에 삽입됨)
-   dffaf4: 짙은 회색, d0d0d0: 중간 회색
-   예: style="background-color: #dffaf4;" ← 이 부분을 바꾸면 됩니다
-   추천 색상 코드:
-   - 연회색: #eeeeee
-   - 진회색: #bbbbbb
-   - 파랑계열: #dceeff, #c0ddff
-   - 민트계열: #dffaf4, #c9f2e3
-   - 분홍계열: #ffe4f0, #ffccde
-   ===================================== */
+    /* 🎨 헤더 배경색 */
+    th {
+        background-color: #e0e0e0;
+    }
 
+    /* 📏 열 너비 조정 (열 순서대로 cm 단위 지정) */
+    th:nth-child(1), td:nth-child(1) { width: 1cm; }   /* 서열 */
+    th:nth-child(2), td:nth-child(2) { width: 3cm; }   /* 이름 */
+    th:nth-child(3), td:nth-child(3) { width: 4cm; }   /* 전화번호 */
+    th:nth-child(4), td:nth-child(4) { width: 6cm; }   /* 교회주소 */
+    th:nth-child(5), td:nth-child(5) { width: 4cm; }   /* 목사임직 */
+    th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직 */
 
-        /* =====================================
-   📏 열 너비 조정 영역 (cm 단위)
-   아래에서 width 값을 변경하면 각 열의 폭이 바뀝니다.
-   예: width: 4cm → 폭 넓어짐 / 2cm → 폭 좁아짐
-   ===================================== */
-    </style>
+    /* 🎨 교차 행 색상: 홀수 행과 짝수 행 배경색 지정 */
+    tbody tr:nth-child(odd) {
+        background-color: #d0d0d0;
+    }
+    tbody tr:nth-child(even) {
+        background-color: #c0c0c0;
+    }
+
+    /* ☎️ 전화번호 링크 스타일 초기화 */
+    a[href^="tel:"] {
+        color: inherit;
+        text-decoration: none;
+    }
+</style>
 </head>
 <body>
 <h1>교역자 주소록</h1>
 <p><strong>총 인원 수:</strong> 24명<br/><strong>총 교회 수:</strong> 21곳</p>
+<!-- 📋 데이터 테이블 시작 -->
 <table>
 <thead>
 <tr>
@@ -91,12 +91,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <tbody>
 <tbody>
 <tr>
-<td style="background-color: #dffaf4;">1</td>
-<td style="background-color: #dffaf4;">정석현 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01023720091">010-2372-0091</a></td>
-<td style="background-color: #dffaf4;">경기 안성시 공도읍 야촌길 9-5 (양기리24-5)</td>
-<td style="background-color: #dffaf4;">1996-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">1</td>
+<td style="background-color: #c0c0c0;">정석현 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01023720091">010-2372-0091</a></td>
+<td style="background-color: #c0c0c0;">경기 안성시 공도읍 야촌길 9-5 (양기리24-5)</td>
+<td style="background-color: #c0c0c0;">1996-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">2</td>
@@ -107,12 +107,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">3</td>
-<td style="background-color: #dffaf4;">배영철 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01080138227">010-8013-8227</a></td>
-<td style="background-color: #dffaf4;">광주 광역시 북구 양산택지소로28, 부영상가202호</td>
-<td style="background-color: #dffaf4;">1996-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">3</td>
+<td style="background-color: #c0c0c0;">배영철 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01080138227">010-8013-8227</a></td>
+<td style="background-color: #c0c0c0;">광주 광역시 북구 양산택지소로28, 부영상가202호</td>
+<td style="background-color: #c0c0c0;">1996-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">4</td>
@@ -123,12 +123,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">5</td>
-<td style="background-color: #dffaf4;">김남수 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01020584762">010-2058-4762</a></td>
-<td style="background-color: #dffaf4;">경기 화성시 봉담읍 삼천병마로 859 (당하리157)</td>
-<td style="background-color: #dffaf4;">2001-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">5</td>
+<td style="background-color: #c0c0c0;">김남수 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01020584762">010-2058-4762</a></td>
+<td style="background-color: #c0c0c0;">경기 화성시 봉담읍 삼천병마로 859 (당하리157)</td>
+<td style="background-color: #c0c0c0;">2001-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">6</td>
@@ -139,12 +139,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">7</td>
-<td style="background-color: #dffaf4;">박흥열 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01022174489">010-2217-4489</a></td>
-<td style="background-color: #dffaf4;">경기 이천시 율면 금율로 828번길 198-46 (오성리427-2)</td>
-<td style="background-color: #dffaf4;">2005-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">7</td>
+<td style="background-color: #c0c0c0;">박흥열 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01022174489">010-2217-4489</a></td>
+<td style="background-color: #c0c0c0;">경기 이천시 율면 금율로 828번길 198-46 (오성리427-2)</td>
+<td style="background-color: #c0c0c0;">2005-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">8</td>
@@ -155,12 +155,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">9</td>
-<td style="background-color: #dffaf4;">김진현 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01030589191">010-3058-9191</a></td>
-<td style="background-color: #dffaf4;">경기 평택시 비전1로26-1 (비전동786-2)</td>
-<td style="background-color: #dffaf4;">2012-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">9</td>
+<td style="background-color: #c0c0c0;">김진현 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01030589191">010-3058-9191</a></td>
+<td style="background-color: #c0c0c0;">경기 평택시 비전1로26-1 (비전동786-2)</td>
+<td style="background-color: #c0c0c0;">2012-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">10</td>
@@ -171,12 +171,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">11</td>
-<td style="background-color: #dffaf4;">강신홍 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01054719148">010-5471-9148</a></td>
-<td style="background-color: #dffaf4;">경기 평택시 팽성읍 팽성송화로 214-13 (남산리 103-1)</td>
-<td style="background-color: #dffaf4;">2015-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">11</td>
+<td style="background-color: #c0c0c0;">강신홍 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01054719148">010-5471-9148</a></td>
+<td style="background-color: #c0c0c0;">경기 평택시 팽성읍 팽성송화로 214-13 (남산리 103-1)</td>
+<td style="background-color: #c0c0c0;">2015-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">12</td>
@@ -187,12 +187,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">13</td>
-<td style="background-color: #dffaf4;">김진태 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01096490679">010-9649-0679</a></td>
-<td style="background-color: #dffaf4;">경기 안산구 상록구 정동1길2 (팔곡일동568-6)</td>
-<td style="background-color: #dffaf4;">2016-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">13</td>
+<td style="background-color: #c0c0c0;">김진태 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01096490679">010-9649-0679</a></td>
+<td style="background-color: #c0c0c0;">경기 안산구 상록구 정동1길2 (팔곡일동568-6)</td>
+<td style="background-color: #c0c0c0;">2016-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">14</td>
@@ -203,12 +203,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">15</td>
-<td style="background-color: #dffaf4;">김미연 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01023932378">010-2393-2378</a></td>
-<td style="background-color: #dffaf4;">경기 화성시 병점서로 31-6 (병점동431-9)</td>
-<td style="background-color: #dffaf4;">2018-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">15</td>
+<td style="background-color: #c0c0c0;">김미연 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01023932378">010-2393-2378</a></td>
+<td style="background-color: #c0c0c0;">경기 화성시 병점서로 31-6 (병점동431-9)</td>
+<td style="background-color: #c0c0c0;">2018-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">16</td>
@@ -219,12 +219,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">17</td>
-<td style="background-color: #dffaf4;">고성록 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01095198150">010-9519-8150</a></td>
-<td style="background-color: #dffaf4;">경기 광주시 포은대로 718-20 장지동 (22년12월 가입)</td>
-<td style="background-color: #dffaf4;">2019-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">17</td>
+<td style="background-color: #c0c0c0;">고성록 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01095198150">010-9519-8150</a></td>
+<td style="background-color: #c0c0c0;">경기 광주시 포은대로 718-20 장지동 (22년12월 가입)</td>
+<td style="background-color: #c0c0c0;">2019-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">18</td>
@@ -235,12 +235,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">NaN</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">19</td>
-<td style="background-color: #dffaf4;">박서현 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01067446032">010-6744-6032</a></td>
-<td style="background-color: #dffaf4;">경기 수원시 권선구 곡반정로 97번길2 (3층)</td>
-<td style="background-color: #dffaf4;">2023-06-01</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">19</td>
+<td style="background-color: #c0c0c0;">박서현 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01067446032">010-6744-6032</a></td>
+<td style="background-color: #c0c0c0;">경기 수원시 권선구 곡반정로 97번길2 (3층)</td>
+<td style="background-color: #c0c0c0;">2023-06-01</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">21</td>
@@ -251,12 +251,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">2025-04-15</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">20</td>
-<td style="background-color: #dffaf4;">박승리 목사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01099120691">010-9912-0691</a></td>
-<td style="background-color: #dffaf4;">청주시 흥덕구 사운로324번길 20 두진백로A상가</td>
-<td style="background-color: #dffaf4;">2010-10-21</td>
-<td style="background-color: #dffaf4;">NaN</td>
+<td style="background-color: #c0c0c0;">20</td>
+<td style="background-color: #c0c0c0;">박승리 목사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01099120691">010-9912-0691</a></td>
+<td style="background-color: #c0c0c0;">청주시 흥덕구 사운로324번길 20 두진백로A상가</td>
+<td style="background-color: #c0c0c0;">2010-10-21</td>
+<td style="background-color: #c0c0c0;">NaN</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">22</td>
@@ -267,12 +267,12 @@ th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
 <td style="background-color: #d0d0d0;">2025-03-22</td>
 </tr>
 <tr>
-<td style="background-color: #dffaf4;">23</td>
-<td style="background-color: #dffaf4;">이정수 전도사</td>
-<td style="background-color: #dffaf4;"><a href="tel:01040451504">010-4045-1504</a></td>
-<td style="background-color: #dffaf4;">경기도 평택시 팽성읍 동서촌로8, 3층 2호</td>
-<td style="background-color: #dffaf4;">NaN</td>
-<td style="background-color: #dffaf4;">2025-03-22</td>
+<td style="background-color: #c0c0c0;">23</td>
+<td style="background-color: #c0c0c0;">이정수 전도사</td>
+<td style="background-color: #c0c0c0;"><a href="tel:01040451504">010-4045-1504</a></td>
+<td style="background-color: #c0c0c0;">경기도 평택시 팽성읍 동서촌로8, 3층 2호</td>
+<td style="background-color: #c0c0c0;">NaN</td>
+<td style="background-color: #c0c0c0;">2025-03-22</td>
 </tr>
 <tr>
 <td style="background-color: #d0d0d0;">24</td>
