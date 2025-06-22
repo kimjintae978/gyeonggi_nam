@@ -47,7 +47,13 @@
         th {
             background-color: #e0e0e0;
         }
-
+/* 열폭 수동 조정 (예: 서열, 이름, 전화번호, 교회주소, 목사임직, 전도사임직) */
+th:nth-child(1), td:nth-child(1) { width: 1cm; }   /* 서열 */
+th:nth-child(2), td:nth-child(2) { width: 3cm; }   /* 이름 */
+th:nth-child(3), td:nth-child(3) { width: 4cm; }   /* 전화번호 */
+th:nth-child(4), td:nth-child(4) { width: 6cm; }   /* 교회주소 */
+th:nth-child(5), td:nth-child(5) { width: 4cm; }   /* 목사임직일자 */
+th:nth-child(6), td:nth-child(6) { width: 4cm; }   /* 전도사임직일자 */
         /* =====================================
    🎨 배경 색상 직접 지정 영역 (현재는 HTML <td> style에 삽입됨)
    dffaf4: 짙은 회색, d0d0d0: 중간 회색
