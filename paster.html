@@ -39,13 +39,13 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-        /* 열 너비 설정 */
-        th:nth-child(1), td:nth-child(1) { width: 5%; }
-        th:nth-child(2), td:nth-child(2) { width: 14%; }
-        th:nth-child(3), td:nth-child(3) { width: 16%; }
-        th:nth-child(4), td:nth-child(4) { width: 40%; }
-        th:nth-child(5), td:nth-child(5) { width: 12.5%; }
-        th:nth-child(6), td:nth-child(6) { width: 12.5%; }
+        /* 셀 폭 비율을 글자수 기준으로 조정 */
+        th:nth-child(1), td:nth-child(1) { width: 5%; }    /* 서열: 2자리 */
+        th:nth-child(2), td:nth-child(2) { width: 13%; }   /* 이름: 8~10자 */
+        th:nth-child(3), td:nth-child(3) { width: 15%; }   /* 전화번호: 13자 */
+        th:nth-child(4), td:nth-child(4) { width: 45%; }   /* 교회주소: 길음 */
+        th:nth-child(5), td:nth-child(5) { width: 11%; }   /* 목사임직일자: 10자 */
+        th:nth-child(6), td:nth-child(6) { width: 11%; }   /* 전도사임명일자: 10자 */
     </style>
 </head>
 <body>
@@ -63,7 +63,6 @@
             </tr>
         </thead>
         <tbody>
-            <!-- 사용자 업로드 파일의 tbody 복사 사용 -->
 <tbody>
 <tr>
 <td>1</td>
