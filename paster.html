@@ -29,23 +29,31 @@
         }
         table {
             width: 100%;
-            min-width: 1600px;
             border-collapse: collapse;
-            font-size: 4vw;
+            font-size: 1.1em;
             font-weight: bold;
+            table-layout: fixed;
         }
         th, td {
-            padding: 1.2vw;
             border: 2px solid #000;
             text-align: center;
+            padding: 12px;
+            word-wrap: break-word;
         }
         th {
             background-color: #f2f2f2;
-            font-size: 4.5vw;
+            font-size: 1.2em;
         }
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        /* 열별 너비 설정 */
+        th:nth-child(1), td:nth-child(1) { width: 5%; }   /* 서열 */
+        th:nth-child(2), td:nth-child(2) { width: 15%; }  /* 이름 */
+        th:nth-child(3), td:nth-child(3) { width: 15%; }  /* 전화번호 */
+        th:nth-child(4), td:nth-child(4) { width: 40%; }  /* 교회주소 (넓게) */
+        th:nth-child(5), td:nth-child(5) { width: 12.5%; } /* 목사임직일자 */
+        th:nth-child(6), td:nth-child(6) { width: 12.5%; } /* 전도사임명일자 */
     </style>
 </head>
 <body>
@@ -68,7 +76,9 @@
                 <tr><td>1</td><td>정석현 목사</td><td>010-2372-0091</td><td>경기 안성시 공도읍 야촌길 9-5 (양기리24-5)</td><td>1996-06-01</td><td></td></tr>
                 <tr><td>2</td><td>정세창 목사</td><td>010-7537-6816</td><td>경기도 산성시 대덕면 중앙대학고 151 1층</td><td>1996-06-01</td><td></td></tr>
                 <tr><td>3</td><td>배영철 목사</td><td>010-8013-8227</td><td>광주 광역시 북구 양산택지소로28, 부영상가202호</td><td>1996-06-01</td><td></td></tr>
-                <!-- ... 생략 ... -->
+                <tr><td>4</td><td>서성영 목사</td><td>010-8242-1375</td><td>경기 부천시 상일로 149번길15, 2층</td><td>1999-06-01</td><td></td></tr>
+                <tr><td>5</td><td>김남수 목사</td><td>010-2058-4762</td><td>경기 화성시 봉담읍 삼천병마로 859 (당하리157)</td><td>2001-06-01</td><td></td></tr>
+                <tr><td>6</td><td>김효신 목사</td><td>010-3784-3731</td><td>경기 평택시 오성면 숙성길 170번지</td><td>2003-06-01</td><td></td></tr>
                 <tr><td>24</td><td>김수연 전도사</td><td></td><td>경기 평택시 오성면 숙성길 170번지</td><td></td><td></td></tr>
             </tbody>
         </table>
