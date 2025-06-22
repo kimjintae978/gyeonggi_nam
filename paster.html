@@ -44,14 +44,17 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #e0e0e0;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+        /* 교차 색상: 짝수행은 옅은 회색/흰색, 홀수행은 짙은 회색/흰색 */
+        tr:nth-child(even) td:nth-child(odd) { background-color: #f0f0f0; }
+        tr:nth-child(even) td:nth-child(even) { background-color: #ffffff; }
 
-        /* cm 단위로 열 너비 설정 */
+        tr:nth-child(odd) td:nth-child(odd) { background-color: #e8e8e8; }
+        tr:nth-child(odd) td:nth-child(even) { background-color: #ffffff; }
+
+        /* cm 열 너비 지정 */
         th:nth-child(1), td:nth-child(1) { width: 1cm; }
         th:nth-child(2), td:nth-child(2) { width: 3cm; }
         th:nth-child(3), td:nth-child(3) { width: 4cm; }
@@ -63,18 +66,18 @@
 <body>
     <h1>교역자 주소록</h1>
     <p><strong>총 인원 수:</strong> 24명<br><strong>총 교회 수:</strong> 21곳</p>
-    <table>
-        <thead>
-            <tr>
-                <th>서열</th>
-                <th>이름</th>
-                <th>전화번호</th>
-                <th>교회주소</th>
-                <th>목사임직일자</th>
-                <th>전도사임명일자</th>
-            </tr>
-        </thead>
-        <tbody>
+<table>
+<thead>
+<tr>
+<th>서열</th>
+<th>이름</th>
+<th>전화번호</th>
+<th>교회주소</th>
+<th>목사임직일자</th>
+<th>전도사임명일자</th>
+</tr>
+</thead>
+<tbody>
 <tbody>
 <tr>
 <td>1</td>
@@ -269,7 +272,7 @@
 <td>NaN</td>
 </tr>
 </tbody>
-        </tbody>
-    </table>
+</tbody>
+</table>
 </body>
 </html>
