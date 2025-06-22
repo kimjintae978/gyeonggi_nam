@@ -51,13 +51,22 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    min-width: 1200px;
+}
 </style>
 </head>
 <body>
 <h1>교역자 주소록</h1>
 <p><strong>총 인원 수:</strong> 24명<br/>
 <strong>총 교회 수:</strong> 21곳</p>
-<table border="1" class="dataframe">
+<div class="container"><table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
 <th>서열</th>
@@ -262,6 +271,6 @@ a:hover {
 <td>NaN</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </body>
 </html>
