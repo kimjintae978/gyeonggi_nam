@@ -47,12 +47,12 @@
             background-color: #e0e0e0;
         }
 
-        /* 교차 색상: 짝수행은 옅은 회색/흰색, 홀수행은 짙은 회색/흰색 */
-        tr:nth-child(even) td:nth-child(odd) { background-color: #f0f0f0; }
-        tr:nth-child(even) td:nth-child(even) { background-color: #ffffff; }
+/* 교차 색상: 짝수행은 중간 회색/흰색, 홀수행은 더 진한 회색/흰색 */
+tr:nth-child(even) td:nth-child(odd) { background-color: #d0d0d0; }
+tr:nth-child(even) td:nth-child(even) { background-color: #ffffff; }
 
-        tr:nth-child(odd) td:nth-child(odd) { background-color: #e8e8e8; }
-        tr:nth-child(odd) td:nth-child(even) { background-color: #ffffff; }
+tr:nth-child(odd) td:nth-child(odd) { background-color: #c0c0c0; }
+tr:nth-child(odd) td:nth-child(even) { background-color: #ffffff; }
 
         /* cm 열 너비 지정 */
         th:nth-child(1), td:nth-child(1) { width: 1cm; }
