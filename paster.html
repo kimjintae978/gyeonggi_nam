@@ -5,47 +5,59 @@
     <title>교역자 주소록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
         body {
             font-family: "HY견고딕", "Malgun Gothic", sans-serif;
-            margin: 40px;
+            margin: 20px;
             background-color: #fff;
         }
+
         h1 {
             text-align: center;
-            font-size: 3em;
+            font-size: 24pt;
             font-weight: bold;
         }
+
         p {
             text-align: center;
-            font-size: 1.5em;
+            font-size: 14pt;
             font-weight: bold;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
         }
+
         th, td {
-            padding: 12px;
+            height: 1cm;
             border: 2px solid #000;
             text-align: center;
             word-wrap: break-word;
-            font-size: 1.1em;
+            font-size: 12pt;
             font-weight: bold;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-        /* 셀 폭 비율을 글자수 기준으로 조정 */
-        th:nth-child(1), td:nth-child(1) { width: 5%; }    /* 서열: 2자리 */
-        th:nth-child(2), td:nth-child(2) { width: 13%; }   /* 이름: 8~10자 */
-        th:nth-child(3), td:nth-child(3) { width: 15%; }   /* 전화번호: 13자 */
-        th:nth-child(4), td:nth-child(4) { width: 45%; }   /* 교회주소: 길음 */
-        th:nth-child(5), td:nth-child(5) { width: 11%; }   /* 목사임직일자: 10자 */
-        th:nth-child(6), td:nth-child(6) { width: 11%; }   /* 전도사임명일자: 10자 */
+
+        /* cm 단위로 열 너비 설정 */
+        th:nth-child(1), td:nth-child(1) { width: 1cm; }
+        th:nth-child(2), td:nth-child(2) { width: 3cm; }
+        th:nth-child(3), td:nth-child(3) { width: 4cm; }
+        th:nth-child(4), td:nth-child(4) { width: 6cm; }
+        th:nth-child(5), td:nth-child(5) { width: 4cm; }
+        th:nth-child(6), td:nth-child(6) { width: 4cm; }
     </style>
 </head>
 <body>
