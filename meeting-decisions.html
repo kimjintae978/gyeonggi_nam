@@ -77,7 +77,7 @@
 
     <div class="toolbar" role="region" aria-label="검색과 필터">
       <label for="q">검색</label>
-      <input id="q" type="search" placeholder="소제목·발표자·비고 검색" aria-label="키워드 검색" />
+      <input id="q" type="search" placeholder="소제목·제안및담당·비고 검색" aria-label="키워드 검색" />
 
       <label for="status">진행상황</label>
       <select id="status" aria-label="현재 진행상황 필터">
@@ -97,7 +97,7 @@
         <thead>
           <tr>
             <th class="th-sort" data-key="title" scope="col">소제목 ▲▼</th>
-            <th class="th-sort" data-key="speaker" scope="col">발표자 ▲▼</th>
+            <th class="th-sort" data-key="speaker" scope="col">제안및담당 ▲▼</th>
             <th class="th-sort" data-key="date" scope="col">일자 ▲▼</th>
             <th scope="col">현재진행상황</th>
             <th scope="col">비고</th>
@@ -106,29 +106,29 @@
         <tbody id="tbody">
           <!-- 예시 데이터: 실제 게시 전 지우고 사용하세요 -->
           <tr>
-            <td data-label="소제목">10월 월례회 예배 진행 방식 개선</td>
-            <td data-label="발표자">김진태</td>
-            <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
-            <td data-label="현재진행상황"><span class="badge done">완료</span></td>
-            <td data-label="비고">출석자 호명 대신 사전 집계로 변경</td>
+            <td data-label="소제목">차량봉사 지원비 지방회당일 현금으로 지급하기</td>
+            <td data-label="제안및담당">김효신목사</td>
+            <td data-label="일자" data-date="2025-11-11">2025-11-11</td>
+            <td data-label="현재진행상황"><span class="badge done">진행중</span></td>
+            <td data-label="비고">임원회의를 거쳐 확정됨</td>
           </tr>
           <tr>
-            <td data-label="소제목">여교역자 하계수련회 후원 감사 보고</td>
-            <td data-label="발표자">배길선</td>
-            <td data-label="일자" data-date="2025-09-02">2025-09-02</td>
+            <td data-label="소제목">지방회 월례회의시 서기가 호명하여 인원파악을 생략 </td>
+            <td data-label="제안및담당">김진태</td>
+            <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
             <td data-label="현재진행상황"><span class="badge progress">진행중</span></td>
-            <td data-label="비고">감사 인사 공지 및 사진 아카이브 예정</td>
+            <td data-label="비고">서기가 미치 예배전에 인원을 파악하여 회의 진행시 결과만 보고함</td>
           </tr>
           <tr>
             <td data-label="소제목">축사 담당 배정 원칙 재확인</td>
-            <td data-label="발표자">배영철</td>
+            <td data-label="제안및담당">배영철</td>
             <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
             <td data-label="현재진행상황"><span class="badge hold">보류</span></td>
             <td data-label="비고">세부 운영안 추가 논의 필요</td>
           </tr>
           <tr>
             <td data-label="소제목">수정교회 소속 정정 보고</td>
-            <td data-label="발표자">구영근</td>
+            <td data-label="제안및담당">구영근</td>
             <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
             <td data-label="현재진행상황"><span class="badge todo">할일</span></td>
             <td data-label="비고">총회직속 지방회 전출 처리 고지</td>
@@ -202,7 +202,7 @@
       // CSV 내보내기 (현재 표시된 행만)
       exportBtn.addEventListener('click', ()=>{
         const visible = Array.from(tbody.querySelectorAll('tr')).filter(tr=>tr.style.display!=='none');
-        const header = ['소제목','발표자','일자','현재진행상황','비고'];
+        const header = ['소제목','제안및담당','일자','현재진행상황','비고'];
         const rowsCsv = visible.map(tr=>{
           const cells = Array.from(tr.cells).map((td,i)=>{
             let text = td.textContent.trim();
