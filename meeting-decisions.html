@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>지방회회의결정된 사항</title>
+  <style>
+    :root{
+      --bg:#0b1320;           /* 짙은 남청색 배경 */
+      --card:#0f1b2e;         /* 카드 배경 */
+      --text:#e6ecf3;         /* 본문 텍스트 */
+      --muted:#a9b7c6;        /* 보조 텍스트 */
+      --accent:#89b4fa;       /* 포커스/링크 */
+      --border:#22324a;       /* 경계선 */
+      --zebra:#0c233b;        /* 줄무늬 */
+      --ok:#2ecc71;           /* 완료 */
+      --prog:#f1c40f;         /* 진행중 */
+      --todo:#00bcd4;         /* 할일 */
+      --hold:#e67e22;         /* 보류 */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,sans-serif}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+
+    /* 헤더 */
+    h1{margin:0 0 12px;font-size:clamp(20px,3.2vw,34px);letter-spacing:0.2px}
+    .subtitle{color:var(--muted);margin-bottom:18px}
+
+    /* 툴바 */
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--border);padding:10px;border-radius:14px;margin:10px 0 18px}
+    .toolbar label{font-size:14px;color:var(--muted)}
+    .toolbar input[type="search"], .toolbar select{
+      background:#0a1423;border:1px solid var(--border);color:var(--text);
+      padding:10px 12px;border-radius:10px;outline:none;min-width:220px
+    }
+    .toolbar input[type="search"]:focus, .toolbar select:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent)}
+    .btn{cursor:pointer;border:1px solid var(--border);background:#0a1423;color:var(--text);padding:10px 14px;border-radius:10px}
+    .btn:hover{border-color:var(--accent)}
+
+    /* 테이블 */
+    .table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .table thead th{position:sticky;top:0;background:#0b1f36;border-bottom:1px solid var(--border);text-align:left;font-weight:600;padding:14px}
+    .table tbody td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+    .table tbody tr:nth-child(odd){background:var(--zebra)}
+    .th-sort{cursor:pointer;user-select:none}
+    .th-sort:hover{color:var(--accent)}
+
+    /* 상태 뱃지 */
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;line-height:1;border:1px solid var(--border)}
+    .badge.todo{background:color-mix(in srgb, var(--todo) 18%, transparent);color:var(--text)}
+    .badge.progress{background:color-mix(in srgb, var(--prog) 18%, transparent);color:var(--text)}
+    .badge.done{background:color-mix(in srgb, var(--ok) 18%, transparent);color:var(--text)}
+    .badge.hold{background:color-mix(in srgb, var(--hold) 18%, transparent);color:var(--text)}
+
+    /* 반응형: 카드형 변환 */
+    @media (max-width: 720px){
+      .table thead{display:none}
+      .table, .table tbody, .table tr, .table td{display:block;width:100%}
+      .table tbody tr{border-bottom:1px solid var(--border)}
+      .table tbody td{display:grid;grid-template-columns:32% 1fr;gap:8px;padding:10px 12px}
+      .table tbody td::before{content:attr(data-label);color:var(--muted)}
+    }
+
+    /* 인쇄 */
+    @media print{
+      body{background:#fff;color:#000}
+      .toolbar{display:none}
+      .table{border-color:#ccc}
+      .table tbody tr:nth-child(odd){background:#fafafa}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>지방회회의결정된 사항</h1>
+    <p class="subtitle">전 회원이 동일한 형식으로 확인할 수 있도록 만든 반응형 표입니다.</p>
+
+    <div class="toolbar" role="region" aria-label="검색과 필터">
+      <label for="q">검색</label>
+      <input id="q" type="search" placeholder="소제목·발표자·비고 검색" aria-label="키워드 검색" />
+
+      <label for="status">진행상황</label>
+      <select id="status" aria-label="현재 진행상황 필터">
+        <option value="">전체</option>
+        <option value="할일">할일</option>
+        <option value="진행중">진행중</option>
+        <option value="완료">완료</option>
+        <option value="보류">보류</option>
+      </select>
+
+      <button class="btn" id="resetBtn" type="button">초기화</button>
+      <button class="btn" id="exportBtn" type="button" title="현재 보이는 행을 CSV로 저장">CSV 내보내기</button>
+    </div>
+
+    <div class="table-wrap" role="region" aria-labelledby="tableTitle">
+      <table class="table" id="decisionTable">
+        <thead>
+          <tr>
+            <th class="th-sort" data-key="title" scope="col">소제목 ▲▼</th>
+            <th class="th-sort" data-key="speaker" scope="col">발표자 ▲▼</th>
+            <th class="th-sort" data-key="date" scope="col">일자 ▲▼</th>
+            <th scope="col">현재진행상황</th>
+            <th scope="col">비고</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <!-- 예시 데이터: 실제 게시 전 지우고 사용하세요 -->
+          <tr>
+            <td data-label="소제목">10월 월례회 예배 진행 방식 개선</td>
+            <td data-label="발표자">김진태</td>
+            <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
+            <td data-label="현재진행상황"><span class="badge done">완료</span></td>
+            <td data-label="비고">출석자 호명 대신 사전 집계로 변경</td>
+          </tr>
+          <tr>
+            <td data-label="소제목">여교역자 하계수련회 후원 감사 보고</td>
+            <td data-label="발표자">배길선</td>
+            <td data-label="일자" data-date="2025-09-02">2025-09-02</td>
+            <td data-label="현재진행상황"><span class="badge progress">진행중</span></td>
+            <td data-label="비고">감사 인사 공지 및 사진 아카이브 예정</td>
+          </tr>
+          <tr>
+            <td data-label="소제목">축사 담당 배정 원칙 재확인</td>
+            <td data-label="발표자">배영철</td>
+            <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
+            <td data-label="현재진행상황"><span class="badge hold">보류</span></td>
+            <td data-label="비고">세부 운영안 추가 논의 필요</td>
+          </tr>
+          <tr>
+            <td data-label="소제목">수정교회 소속 정정 보고</td>
+            <td data-label="발표자">구영근</td>
+            <td data-label="일자" data-date="2025-10-28">2025-10-28</td>
+            <td data-label="현재진행상황"><span class="badge todo">할일</span></td>
+            <td data-label="비고">총회직속 지방회 전출 처리 고지</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const q = document.getElementById('q');
+      const status = document.getElementById('status');
+      const resetBtn = document.getElementById('resetBtn');
+      const exportBtn = document.getElementById('exportBtn');
+      const tbody = document.getElementById('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      function normalize(s){return (s||'').toString().toLowerCase().normalize('NFKD')}
+
+      function getStatusText(cell){
+        const b = cell.querySelector('.badge');
+        return b ? b.textContent.trim() : cell.textContent.trim();
+      }
+
+      function applyFilter(){
+        const k = normalize(q.value);
+        const st = status.value;
+        rows.forEach(tr => {
+          const t = normalize(tr.cells[0].textContent);
+          const s = normalize(tr.cells[1].textContent);
+          const n = normalize(tr.cells[4].textContent);
+          const cur = getStatusText(tr.cells[3]);
+          const statusMatch = !st || cur === st;
+          const keywordMatch = !k || (t.includes(k) || s.includes(k) || n.includes(k));
+          tr.style.display = (statusMatch && keywordMatch) ? '' : 'none';
+        });
+      }
+
+      q.addEventListener('input', applyFilter);
+      status.addEventListener('change', applyFilter);
+      resetBtn.addEventListener('click', ()=>{ q.value=''; status.value=''; applyFilter(); });
+
+      // 정렬
+      const ths = document.querySelectorAll('.th-sort');
+      ths.forEach(th => th.addEventListener('click', () => sortBy(th.dataset.key, th)));
+
+      let sortState = {key:null, asc:true};
+      function sortBy(key, th){
+        const idx = {title:0, speaker:1, date:2}[key];
+        const asc = sortState.key===key ? !sortState.asc : true;
+        sortState = {key, asc};
+        const toSort = rows.slice().filter(tr=>tr.style.display!=='none');
+        toSort.sort((a,b)=>{
+          let av, bv;
+          if(key==='date'){
+            av = a.cells[2].getAttribute('data-date')||a.cells[2].textContent;
+            bv = b.cells[2].getAttribute('data-date')||b.cells[2].textContent;
+          } else {
+            av = a.cells[idx].textContent.trim();
+            bv = b.cells[idx].textContent.trim();
+          }
+          return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+        });
+        // 재배치
+        toSort.forEach(tr=>tbody.appendChild(tr));
+        // 헤더 표시 업데이트
+        document.querySelectorAll('.th-sort').forEach(h=>h.textContent=h.textContent.replace(/[▲▼]+/g,'').trim()+` ${asc?'▲':'▼'}`);
+      }
+
+      // CSV 내보내기 (현재 표시된 행만)
+      exportBtn.addEventListener('click', ()=>{
+        const visible = Array.from(tbody.querySelectorAll('tr')).filter(tr=>tr.style.display!=='none');
+        const header = ['소제목','발표자','일자','현재진행상황','비고'];
+        const rowsCsv = visible.map(tr=>{
+          const cells = Array.from(tr.cells).map((td,i)=>{
+            let text = td.textContent.trim();
+            if(i===3){ // 상태
+              const b = td.querySelector('.badge');
+              text = b ? b.textContent.trim() : text;
+            }
+            return '"'+text.replace(/"/g,'""')+'"';
+          });
+          return cells.join(',');
+        });
+        const csv = [header.join(','), ...rowsCsv].join('\n');
+        const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = '지방회회의결정된_사항.csv'; a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // 초기 필터 적용
+      applyFilter();
+    })();
+  </script>
+</body>
+</html>
