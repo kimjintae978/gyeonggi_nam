@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>경기남지방회 경조사 및 지원금 계좌 안내</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-color: #f5f7fb;
+      --card-bg: #ffffff;
+      --border-color: #d0d7e2;
+      --accent-color: #2f4f90;
+      --accent-soft: #e5ecff;
+      --text-main: #222222;
+      --text-sub: #555555;
+      --table-header-bg: #f0f3fa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "맑은 고딕", "Malgun Gothic", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    .title-box {
+      background: linear-gradient(135deg, #2f4f90, #4a6bb5);
+      color: #ffffff;
+      padding: 20px 24px;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .title-box h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .title-box p {
+      margin: 8px 0 0;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    .title-box .notice {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    main {
+      margin-top: 18px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 16px 18px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 18px;
+    }
+
+    .info-card h2 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: var(--accent-color);
+    }
+
+    .info-card p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+
+    .table-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 0;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .table-card-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--accent-soft);
+    }
+
+    .table-card-header h2 {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--accent-color);
+    }
+
+    .table-card-header p {
+      margin: 6px 0 0;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background: var(--table-header-bg);
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--accent-color);
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafbff;
+    }
+
+    tbody tr:hover {
+      background: #eef3ff;
+    }
+
+    .col-id {
+      width: 40px;
+      text-align: center;
+    }
+
+    .col-name {
+      width: 80px;
+    }
+
+    .col-church {
+      width: 150px;
+    }
+
+    .col-account {
+      width: 320px;
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .title-box {
+        padding: 16px 18px;
+      }
+
+      .title-box h1 {
+        font-size: 1.3rem;
+      }
+
+      .title-box p {
+        font-size: 0.85rem;
+      }
+
+      .info-card {
+        padding: 12px 14px;
+      }
+
+      .table-card-header {
+        padding: 10px 12px;
+      }
+
+      th, td {
+        padding: 6px 8px;
+      }
+
+      table {
+        min-width: 580px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="title-box">
+        <h1>경기남지방회 경조사 및 지원금 계좌 안내</h1>
+        <p class="notice">변경사항이 있으면 연락바랍니다.</p>
+        <p>
+          회원 목사님들의 교회 및 개인 계좌 정보를 정리한 페이지입니다.<br />
+          경조사 및 지원금, 선교 후원 등의 목적으로 송금하실 때 아래 표를 참고해 주시기 바랍니다.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="info-card">
+        <h2>안내</h2>
+        <p>① 본 표에 기재된 계좌번호는 각 회원의 기본 계좌입니다.</p>
+        <p>② 표의 내용은 지방회에서 취합한 자료를 기준으로 정리하였습니다.</p>
+        <p>③ 변경 사항이 있을 경우, 총무에게 알려 주시면 문서가 갱신됩니다.</p>
+      </section>
+
+      <section class="table-card">
+        <div class="table-card-header">
+          <h2>회원별 계좌 정보</h2>
+          <p>이름, 교회명, 계좌번호를 한눈에 확인할 수 있도록 정리했습니다.</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th class="col-id">ID</th>
+                <th class="col-name">이름</th>
+                <th class="col-church">교회</th>
+                <th class="col-account">계좌번호</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-id">1</td>
+                <td class="col-name">정석현</td>
+                <td class="col-church">(순)평강</td>
+                <td class="col-account">농협 382-12-018186 정석현</td>
+              </tr>
+              <tr>
+                <td class="col-id">2</td>
+                <td class="col-name">정세창</td>
+                <td class="col-church">청주 은혜</td>
+                <td class="col-account">농협 301-0125-8968-31 안성은혜교회은혜복지원</td>
+              </tr>
+              <tr>
+                <td class="col-id">3</td>
+                <td class="col-name">배영철</td>
+                <td class="col-church">양산(순)</td>
+                <td class="col-account">농협 167-02-560522</td>
+              </tr>
+              <tr>
+                <td class="col-id">4</td>
+                <td class="col-name">서성영</td>
+                <td class="col-church">복된</td>
+                <td class="col-account">농협 13001956100307 서성영</td>
+              </tr>
+              <tr>
+                <td class="col-id">5</td>
+                <td class="col-name">김남수</td>
+                <td class="col-church">밝은 빛</td>
+                <td class="col-account">우리 805185-704-02-101 김남수</td>
+              </tr>
+              <tr>
+                <td class="col-id">6</td>
+                <td class="col-name">김효신</td>
+                <td class="col-church">찬양</td>
+                <td class="col-account">농협 356-0949-8229-33 김효신</td>
+              </tr>
+              <tr>
+                <td class="col-id">7</td>
+                <td class="col-name">박흥열</td>
+                <td class="col-church">오성 사랑</td>
+                <td class="col-account">농협 233118-52-088754 박흥열</td>
+              </tr>
+              <tr>
+                <td class="col-id">8</td>
+                <td class="col-name">서경오</td>
+                <td class="col-church">(순)세운돌</td>
+                <td class="col-account">농협 205029-56-171661</td>
+              </tr>
+              <tr>
+                <td class="col-id">9</td>
+                <td class="col-name">김진현</td>
+                <td class="col-church">비전(순)</td>
+                <td class="col-account">농협 3510675525013 김진현</td>
+              </tr>
+              <tr>
+                <td class="col-id">10</td>
+                <td class="col-name">조정훈</td>
+                <td class="col-church">하늘소망</td>
+                <td class="col-account">농협 356-1282-8402-13 조정훈</td>
+              </tr>
+              <tr>
+                <td class="col-id">11</td>
+                <td class="col-name">강신홍</td>
+                <td class="col-church">주사랑</td>
+                <td class="col-account">농협 302-0596-6357-71 강신홍</td>
+              </tr>
+              <tr>
+                <td class="col-id">12</td>
+                <td class="col-name">오승희</td>
+                <td class="col-church">참빛교회</td>
+                <td class="col-account">국민 546902-01-068527 오승희</td>
+              </tr>
+              <tr>
+                <td class="col-id">13</td>
+                <td class="col-name">김진태</td>
+                <td class="col-church">선한열매</td>
+                <td class="col-account">우리은행 1002-330-529392 김진태</td>
+              </tr>
+              <tr>
+                <td class="col-id">14</td>
+                <td class="col-name">한천희</td>
+                <td class="col-church">주본향</td>
+                <td class="col-account"></td>
+              </tr>
+              <tr>
+                <td class="col-id">15</td>
+                <td class="col-name">김미연</td>
+                <td class="col-church">열린(순)</td>
+                <td class="col-account">농협 351-0961-4251-93 열린순복음교회</td>
+              </tr>
+              <tr>
+                <td class="col-id">16</td>
+                <td class="col-name">김은숙</td>
+                <td class="col-church">선한순복음</td>
+                <td class="col-account">신한 110-232-799278 김은숙</td>
+              </tr>
+              <tr>
+                <td class="col-id">17</td>
+                <td class="col-name">고성록</td>
+                <td class="col-church">(순) 하비꿈</td>
+                <td class="col-account">농협 351-1260-9935-33 순복음하비꿈교회</td>
+              </tr>
+              <tr>
+                <td class="col-id">18</td>
+                <td class="col-name">배길선</td>
+                <td class="col-church">반석샘물</td>
+                <td class="col-account">농협 813042-52-054485</td>
+              </tr>
+              <tr>
+                <td class="col-id">19</td>
+                <td class="col-name">박서현</td>
+                <td class="col-church">창대교회</td>
+                <td class="col-account">농협 208000-52-132395 박서현</td>
+              </tr>
+              <tr>
+                <td class="col-id">20</td>
+                <td class="col-name">박승리</td>
+                <td class="col-church">선한순복음</td>
+                <td class="col-account"></td>
+              </tr>
+              <tr>
+                <td class="col-id">21</td>
+                <td class="col-name">이강춘</td>
+                <td class="col-church">선한순복음</td>
+                <td class="col-account"></td>
+              </tr>
+              <tr>
+                <td class="col-id">22</td>
+                <td class="col-name">정상효</td>
+                <td class="col-church">공주은혜</td>
+                <td class="col-account">국민 746701-01-882502 정상효</td>
+              </tr>
+              <tr>
+                <td class="col-id">23</td>
+                <td class="col-name">이정수</td>
+                <td class="col-church">공주은혜</td>
+                <td class="col-account">카카오뱅크 3333-08-5501947 이정수</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        문서 기준: 회원 명단 및 계좌 정보<br />
+        최신 내용 반영을 위해 수시로 수정될 수 있습니다.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
